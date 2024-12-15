@@ -1,0 +1,13 @@
+#!/bin/bash
+count=$(ps -ef | grep -c '/bin/ollamaa run llama3.3' )
+echo $count
+if [[ "$count"="1" ]]; then
+  echo "running" >> $HOME/docker/ollama-ui/llama.log
+else
+  echo "stopped" >> $HOME/docker/ollama-ui/llama.log
+  nohup ollama run llama3.3&
+fi
+
+
+
+
