@@ -15,3 +15,7 @@
 - we'll do an ```apt install docker```
 
 - we'll do an ```apt install docker-compose```
+
+## run this command:
+
+```apt_setup```
