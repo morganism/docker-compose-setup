@@ -1,0 +1,22 @@
+#!/bin/bash
+
+PKGMANAGER="apt"
+if [[ -n $1 ]]; then
+  if [[ "$1" =~ ^--help ]]; then
+    echo "Usage $0 [PACKAGE MANAGER]"
+    echo "wehere PACKAGE MANAGER could by 'yum' .. defaults to apt"
+    exit 1
+  fi
+   
+  PKGMANAGER=$1
+fi
+
+# let's setup all our apt dependencies
+
+$PKGMANAGER update
+$PGKMANAGER upgrade
+$PGKMANAGER install -y git
+$PGKMANAGER install -y gh
+$PGKMANAGER install -y curl
+$PGKMANAGER install -y docker
+$PGKMANAGER install -y docker-compose
