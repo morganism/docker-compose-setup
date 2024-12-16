@@ -107,3 +107,11 @@ rescue StandardError => e
   puts "Error: #{e.message}"
 end
 
+=begin
+example config file
+{
+  "RUBY_APPLICATION_DIRECTORY": "./my_ruby_app",
+  "RUBY_APPLICATION_NAME": "my_ruby_app",
+  "PORT": 3000
+}
+=end
