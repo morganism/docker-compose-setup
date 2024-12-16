@@ -24,6 +24,6 @@
 
 - create a docker image of a ruby app, upload to github and create a docker-compose.yaml file for it
 
--- generator_config.yaml contains the specifics of where to look and what to call the app and it's exposed port
+-- generator_config.json contains the specifics of where to look and what to call the app and it's exposed port
 
 --- we'll add more if needed
