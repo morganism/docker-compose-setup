@@ -45,7 +45,28 @@ class DockerAppGenerator
   end
 
   # Build and push the Docker image
+    # Authenticate with DockerHub
+  def authenticate_dockerhub
+    username = ENV['DOCKERHUB_USERNAME']
+    password = ENV['DOCKERHUB_PASSWORD']
+
+    if username.nil? || password.nil?
+      raise "DockerHub credentials not found in environment variables. Set DOCKERHUB_USERNAME and DOCKERHUB_PASSWORD."
+    end
+
+    # Log in to DockerHub
+    login_command = "echo #{password} | docker login --username #{username} --password-stdin"
+    unless system(login_command)
+      raise "DockerHub login failed. Check your credentials."
+    end
+
+    puts "Authenticated with DockerHub as #{username}"
+  end
+
+  # Build and push the Docker image
   def build_and_push_image
+    authenticate_dockerhub
+
     app_name = config['RUBY_APPLICATION_NAME']
     app_directory = config['RUBY_APPLICATION_DIRECTORY']
     image_tag = "#{app_name}/#{app_name}:latest"
