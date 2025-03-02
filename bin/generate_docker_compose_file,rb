@@ -1,0 +1,24 @@
+require 'yaml'
+
+# Read the Dockerfile to determine the image name
+dockerfile = File.read("Dockerfile")
+image_name = dockerfile[/^FROM\s+([^\s]+)/, 1] || "custom-image"
+
+# Define the docker-compose configuration
+compose_config = {
+  "version" => "3.8",
+  "services" => {
+    "app" => {
+      "build" => ".",
+      "image" => image_name,
+      "ports" => ["8080:8080"], # Modify as needed
+      "volumes" => ["./app:/app"], # Modify as needed
+      "environment" => ["ENV_VAR=value"] # Modify as needed
+    }
+  }
+}
+
+# Write to docker-compose.yml
+File.write("docker-compose.yml", compose_config.to_yaml)
+
+puts "docker-compose.yml generated successfully."
