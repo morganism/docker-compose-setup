@@ -1,3 +1,5 @@
+[![Ruby](https://github.com/morganism/docker-compose-setup/actions/workflows/ruby.yml/badge.svg)](https://github.com/morganism/docker-compose-setup/actions/workflows/ruby.yml)
+
 # Docker Compose Setup
 
 ## the ./docker directory contains directories that have ```docker-compose.yml``` each one wil launch the image into docker using the command ```docker-compose up -d``` sometimes ```docker compose up -d``` such as on OSX 
