@@ -1,0 +1,15 @@
+services:
+  olivetin:
+    container_name: olivetin
+    image: jamesread/olivetin
+    volumes:
+      - OliveTin-config:/config # replace host path or volume as needed
+    ports:
+      - "1337:1337"
+    restart: unless-stopped
+    user: root
+
+
+volumes:
+  OliveTin-config:
+    external: false

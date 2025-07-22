@@ -1,0 +1,22 @@
+#!/bin/bash
+: <<DOCXX
+Add description
+Author: 
+DATE: 
+DOCXX
+
+sudo echo "got root ?"
+
+THISPATH="$(realpath $0)"
+THISDIR="$(dirname $THISPATH)"
+cd $THISDIR/..
+COMPOSE_FILES=$(find docker/ -type f -name '*compose.y*ml' -exec realpath {} \;)
+for f in $COMPOSE_FILES
+do
+  DIR="$(dirname $f)"
+  pushd $DIR
+  echo "bringing up $(basename $DIR) ..."
+  sudo docker-compose up -d
+  echo "return code:${?}"
+  popd
+done
