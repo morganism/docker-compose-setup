@@ -1,5 +1,14 @@
 #!/bin/bash
 # Launch Portainer using Claude Code
-# This script invokes Claude to checkout the repo, launch portainer, and open the browser
+# This script invokes Claude to checkout/update the repo, launch portainer, and open the browser
 
-claude --print "checkout this github repo 'morganism/docker-compose-setup' and then launch the portainer docker compose container (in sub directory: docker/portainer) then open 'https://localhost:9443' user=admin password=Portainer123!"
+claude --print "
+Check if the repo 'morganism/docker-compose-setup' exists at ~/src/claude/docker-compose-setup.
+If it exists, cd into it and run 'git pull' to refresh.
+If it doesn't exist, clone it to ~/src/claude/docker-compose-setup.
+Then launch the portainer docker compose container (in sub directory: docker/portainer).
+Then open 'https://localhost:9443' user=admin password=Portainer123!
+
+IMPORTANT: Log every command you execute with timestamp to ~/data/Claude/logs/launch_using_claude.log
+Format each log entry as: [YYYY-MM-DD HH:MM:SS] COMMAND: <command> | RESULT: <success/failure>
+"
